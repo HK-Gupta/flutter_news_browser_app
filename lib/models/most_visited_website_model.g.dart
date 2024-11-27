@@ -17,15 +17,16 @@ class MostVisitedWebsiteModelAdapter extends TypeAdapter<MostVisitedWebsiteModel
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return MostVisitedWebsiteModel(
-      id: fields[0] as String,
-      domain: fields[1] as String,
-      faviconUrl: fields[2] as String,
-      visitCount: fields[3] as int,
-      addedAt: fields[4] as DateTime,
-      isFavorite: fields[5] as bool,
-      name: fields[6] as String,
+      id: fields[0] as String? ?? '',
+      domain: fields[1] as String? ?? '',
+      faviconUrl: fields[2] as String? ?? '',
+      visitCount: fields[3] as int? ?? 0,
+      addedAt: fields[4] as DateTime? ?? DateTime.now(),
+      isFavorite: fields[5] as bool? ?? false,
+      name: fields[6] as String? ?? '',
     );
   }
+
 
   @override
   void write(BinaryWriter writer, MostVisitedWebsiteModel obj) {
